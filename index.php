@@ -60,15 +60,10 @@
                   <i class="fa fa-user" aria-hidden="true"></i>
                   <span> Login as admin </span>
                 </a>
-                <a href="./patient/login/login.html">
+                <a href="./students/login/login.html">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <span> Login as patient </span>
+                  <span> Login as student </span>
                 </a>
-                <a href="./patient/register/register.html">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                  <span> Sign Up </span>
-                </a>
-             
               </div>
             </div>
           </nav>
@@ -76,105 +71,7 @@
       </div>
     </header>
     <!-- end header section -->
-    <!-- slider section -->
-    <section class="slider_section">
-      <div class="dot_design">
-        <img src="images/dots.png" alt="" />
-      </div>
-      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    <h1>
-                      Mico <br />
-                      <span> Hospital </span>
-                    </h1>
-                    <p>
-                      when looking at its layout. The point of using Lorem
-                      Ipsum is that it has a more-or-less normal distribution
-                      of letters, as opposed to
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    <h1>
-                      Mico <br />
-                      <span> Hospital </span>
-                    </h1>
-                    <p>
-                      when looking at its layout. The point of using Lorem
-                      Ipsum is that it has a more-or-less normal distribution
-                      of letters, as opposed to
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    <div class="play_btn">
-                    
-                    </div>
-                    <h1>
-                      Mico <br />
-                      <span> Hospital </span>
-                    </h1>
-                    <p>
-                      when looking at its layout. The point of using Lorem
-                      Ipsum is that it has a more-or-less normal distribution
-                      of letters, as opposed to
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel_btn-box">
-          <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
-            <img src="images/prev.png" alt="" />
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
-            <img src="images/next.png" alt="" />
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </section>
-    <!-- end slider section -->
   </div>
-
-
 
   <!-- about section -->
 
@@ -183,21 +80,16 @@
       <div class="row">
         <div class="col-md-6">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="" />
+            <img src="images/pexels-geralt-21696.jpg" alt="" />
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
-              <h2>About <span>Hospital</span></h2>
+              <h2>About <span>School</span></h2>
             </div>
             <p>
-              has a more-or-less normal distribution of letters, as opposed to
-              using 'Content here, content here', making it look like readable
-              English. Many desktop publishing packages and web page editors
-              has a more-or-less normal distribution of letters, as opposed to
-              using 'Content here, content here', making it look like readable
-              English. Many desktop publishing packages and web page editors
+            Private classes offer a tailored and focused learning experience that caters to individual needs and goals. Unlike group classes, private sessions provide students with personalized attention, allowing them to progress at their own pace and focus on areas where they need the most improvement. This one-on-one approach fosters a deeper understanding of the subject matter, encourages confidence, and enables instructors to customize the curriculum to suit the student's learning style. Private classes are ideal for those seeking a flexible schedule, specific skill development, or a more intimate learning environment. 
             </p>
           </div>
         </div>
@@ -207,179 +99,6 @@
 
   <!-- end about section -->
 
-  <!-- treatment section -->
-
-  <section class="treatment_section layout_padding">
-    <div class="side_img">
-      <img src="images/treatment-side-img.jpg" alt="" />
-    </div>
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>Hospital <span>Treatment</span></h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/t1.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h4>Nephrologist Care</h4>
-              <p>
-                alteration in some form, by injected humour, or randomised
-                words which don't look even slightly e sure there isn't
-                anything
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/t2.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h4>Eye Care</h4>
-              <p>
-                alteration in some form, by injected humour, or randomised
-                words which don't look even slightly e sure there isn't
-                anything
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/t3.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h4>Pediatrician Clinic</h4>
-              <p>
-                alteration in some form, by injected humour, or randomised
-                words which don't look even slightly e sure there isn't
-                anything
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/t4.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h4>Parental Care</h4>
-              <p>
-                alteration in some form, by injected humour, or randomised
-                words which don't look even slightly e sure there isn't
-                anything
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end treatment section -->
-
-
-
-  <!-- client section -->
-  <section class="client_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          <span>Testimonial</span>
-        </h2>
-      </div>
-    </div>
-    <div class="container px-0">
-      <div id="customCarousel2" class="carousel carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>Morijorch</h5>
-                  <h6>Default model text</h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                editors now use Lorem Ipsum as their default model text, and a
-                search for 'lorem ipsum' will uncover many web sites still in
-                their infancy. Variouseditors now use Lorem Ipsum as their
-                default model text, and a search for 'lorem ipsum' will
-                uncover many web sites still in their infancy. Variouseditors
-                now use Lorem Ipsum as their default model text, and a search
-                for 'lorem ipsum' will uncover many web sites still in their
-                infancy. Various
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>Rochak</h5>
-                  <h6>Default model text</h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                Variouseditors now use Lorem Ipsum as their default model
-                text, and a search for 'lorem ipsum' will uncover many web
-                sites still in their infancy. Variouseditors now use Lorem
-                Ipsum as their default model text, and a search for 'lorem
-                ipsum' will uncover many web sites still in their infancy.
-                editors now use Lorem Ipsum as their default model text, and a
-                search for 'lorem ipsum' will uncover many web sites still in
-                their infancy.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>Brad Johns</h5>
-                  <h6>Default model text</h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                Variouseditors now use Lorem Ipsum as their default model
-                text, and a search for 'lorem ipsum' will uncover many web
-                sites still in their infancy, editors now use Lorem Ipsum as
-                their default model text, and a search for 'lorem ipsum' will
-                uncover many web sites still in their infancy. Variouseditors
-                now use Lorem Ipsum as their default model text, and a search
-                for 'lorem ipsum' will uncover many web sites still in their
-                infancy. Various
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel_btn-box">
-          <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
-            <i class="fa fa-angle-left" aria-hidden="true"></i>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#customCarousel2" role="button" data-slide="next">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end client section -->
-
-
-
-  <!-- end info_section -->
 
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>

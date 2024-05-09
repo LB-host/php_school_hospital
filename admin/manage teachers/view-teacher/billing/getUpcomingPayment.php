@@ -7,17 +7,15 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
     exit();
 }
 
-$StudentID = $_SESSION['StudentID'];
+$doctorID = $_SESSION['doctorID'];
 
-$sql = "SELECT b.BillingID, b.AmountDue, b.BillingDueDate 
-        FROM studentbilling b 
-        LEFT JOIN studentpayments p ON p.BillingID = b.BillingID 
-        WHERE b.StudentID = ? and 
-        (b.BillingID not in (SELECT BillingID from studentpayments));";
+$sql = "SELECT *
+        FROM doctorpayments  
+        WHERE doctorID = ? and paid = 0";
 
 
 $stmt = $mysqli->prepare($sql);
-$stmt->bind_param("i", $StudentID);
+$stmt->bind_param("i", $doctorID);
 $stmt->execute();
 $result = $stmt->get_result();
 $upcomingPayments = $result->fetch_all(MYSQLI_ASSOC);

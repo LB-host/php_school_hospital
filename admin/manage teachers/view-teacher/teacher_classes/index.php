@@ -1,5 +1,7 @@
 <?php
 require_once "./get_registered_classes.php";
+require_once "./view_course_action.php";
+require_once "./view_rooms_action.php";
 
 ?>
 <!DOCTYPE html>
@@ -153,6 +155,29 @@ th, td {
     padding-left : 5%;
     padding-right: 5%;
  }
+ .table-header {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.add-payment{
+    background-color: #3497e5;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    /* width: 100%; */
+}
+
+.btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
     </style>
   </head>
@@ -198,6 +223,11 @@ th, td {
 
     <div class="body-container">
     <div class="table-container">
+    <div class="table-header">
+              <button class="btn add-payment" onclick="openAddpaymentModal()">
+                Add New class
+              </button>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -205,6 +235,7 @@ th, td {
                   <th>Course Name</th>
                   <th>Room Name</th>
                   <th>Schedule</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -215,6 +246,11 @@ th, td {
                     <td><?php echo $row['CourseName'];?></td>
                     <td><?php echo $row['RoomName']; ?></td>
                     <td><?php echo $row['Schedule']; ?></td>
+                    <td>
+                    <button class="btn delete-btn" onclick="deleteClass(<?php echo $row['ClassID']; ?>)">
+                      Delete
+                    </button>
+                    </td>
                 </tr>
               <?php endforeach; ?>
                 </tr>
@@ -223,7 +259,92 @@ th, td {
         </div>
     </div>
     </div>
+    <div id="addpaymentModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New class</h2>
+            <form id="addpaymentForm">
+
+            <label for="CourseID">Course:</label>
+              <select id="CourseID" name="CourseID" required >
+                <?php foreach ($coursesList as $Coursee): ?>
+                  <?php $Course = $Coursee['CourseName'] ?>
+                  <option  value="<?php echo $Coursee['CourseID']; ?>"><?php echo $Course; ?></option>
+                <?php endforeach; ?>  
+              </select>
+
+              <label for="RoomID">Room:</label>
+              <select id="RoomID" name="RoomID" required >
+                <?php foreach ($roomsList as $room): ?>
+                  <?php $roomName = $room['RoomName'] ?>
+                  <option  value="<?php echo $room['RoomID']; ?>"><?php echo $roomName; ?></option>
+                <?php endforeach; ?>  
+              </select>
+
+              <!-- Other form fields here -->
+              <label for="Schedule">Schedule</label>
+              <input type="datetime-local" id="Schedule" name="Schedule" required>
+
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+
+    
+   
+    <script>
+       function deleteClass(ClassID) {
+
+fetch("./remove_class.php?ClassID=" + ClassID , {
+  method: "GET"
+})
+.then((response) => response.json())
+.then((data) => {
+  if (data.error) {
+    alert(data.error);
+  } else if (data.success) {
+    alert(data.success);
+    location.reload();
+  }
+})
+.catch((error) => {
+  alert("Error: " + error.message);
+});
+}
+      function openAddpaymentModal() {
+            var modal = document.getElementById("addpaymentModal");
+            modal.style.display = "block";
+          }
+
+          function closeModal() {
+            var modal = document.getElementById("addpaymentModal");
+            modal.style.display = "none";
+          }
+
+          document.getElementById("addpaymentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this); 
+            fetch("./add_class.php", {
+              method: "POST",
+              body: formData
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                alert(data.error);
+              } else if (data.success) {
+                alert(data.success);
+                closeModal(); 
+                location.reload();
+              }
+            })
+            .catch((error) => {
+              alert("Error: " + error.message);
+            });
+          });
+    </script>
   </body>
+  
 
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>

@@ -10,8 +10,8 @@
     $doctorID = $_SESSION['doctorID'];
 
 
-    $insertStmt = $mysqli->prepare("INSERT INTO doctorpayments ( doctorID, CourseID, HoursTaught, PaymentAmount, PaymentDate, paid) VALUES (?, ?, ?, ?, ?, 0)");
-    $insertStmt->bind_param("iisss", $doctorID, $_POST['CourseID'], $_POST['HoursTaught'], $_POST['PaymentAmount'], $_POST['PaymentDate']);
+    $insertStmt = $mysqli->prepare("INSERT INTO classes ( CourseID, DoctorID, RoomID, Schedule) VALUES (?, ?, ?, ?)");
+    $insertStmt->bind_param("iiis", $_POST['CourseID'], $doctorID,  $_POST['RoomID'], $_POST['Schedule']);
     $insertStmt->execute();
 
     if ($insertStmt->affected_rows > 0) {

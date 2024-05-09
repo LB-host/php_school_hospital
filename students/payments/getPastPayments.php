@@ -1,5 +1,5 @@
 <?php
-require_once '../../../../connection/db_connection.php';
+require_once '../../connection/db_connection.php';
 
 session_start();
 if (!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
@@ -8,14 +8,15 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
 }
 
 $username = $_SESSION['username'];
-$doctorID = $_SESSION['doctorID'];
+$StudentID = $_SESSION['StudentID'];
 
-$sql = "SELECT *
-        FROM doctorpayments 
-        WHERE doctorID = ?  AND paid = 1";
+$sql = "SELECT p.PaymentID, p.PaymentAmount, p.PaymentDate
+        FROM studentpayments p
+        INNER JOIN studentbilling b ON p.BillingID = b.BillingID  
+        WHERE b.StudentID = ? ";
 
 $stmt = $mysqli->prepare($sql);
-$stmt->bind_param("i", $doctorID);
+$stmt->bind_param("i", $StudentID);
 $stmt->execute();
 $result = $stmt->get_result();
 $pastPayments = $result->fetch_all(MYSQLI_ASSOC);

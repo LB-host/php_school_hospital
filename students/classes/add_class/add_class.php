@@ -1,5 +1,5 @@
 <?php
-    require_once '../../../../connection/db_connection.php';
+    require_once '../../../connection/db_connection.php';
 
     session_start();
     if (!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
@@ -7,11 +7,11 @@
         exit();
     }
 
-    $doctorID = $_SESSION['doctorID'];
+    $StudentID = $_SESSION['StudentID'];
 
 
-    $insertStmt = $mysqli->prepare("INSERT INTO doctorpayments ( doctorID, CourseID, HoursTaught, PaymentAmount, PaymentDate, paid) VALUES (?, ?, ?, ?, ?, 0)");
-    $insertStmt->bind_param("iisss", $doctorID, $_POST['CourseID'], $_POST['HoursTaught'], $_POST['PaymentAmount'], $_POST['PaymentDate']);
+    $insertStmt = $mysqli->prepare("INSERT INTO student_courses (student_ID, ClassID) VALUES (?, ?)");
+    $insertStmt->bind_param("ii",  $StudentID ,$_POST['ClassID']);
     $insertStmt->execute();
 
     if ($insertStmt->affected_rows > 0) {

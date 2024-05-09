@@ -5,10 +5,10 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username = $_POST['username'];
-    $password = $_POST['psw']; 
+    $password = $_POST['password']; 
 
 
-    $sql = "SELECT Password, StudentID FROM students WHERE Username = ? OR Email = ?";
+    $sql = "SELECT Password, DoctorID FROM doctors WHERE username = ? OR Email = ?";
     $stmt = $mysqli->prepare($sql);
 
     if ($stmt) {
@@ -17,13 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($DBPass, $StudentID );
+            $stmt->bind_result($DBPass, $DBDoctorID);
             $stmt->fetch();
 
             if (password_verify($password, $DBPass)) {
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
-                $_SESSION['StudentID'] = $StudentID;
+                $_SESSION['doctorID'] = $DBDoctorID;
+
                 echo json_encode(
                     array("success" =>  "user loged in successfully"));
             } else {

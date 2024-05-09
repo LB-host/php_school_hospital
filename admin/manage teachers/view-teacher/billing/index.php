@@ -223,6 +223,7 @@ th, td {
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Hours Taught</th>
                   <th>Total Amount</th>
                   <th>Billing Date</th>
                   <th>Actions</th>
@@ -232,11 +233,12 @@ th, td {
                 <tr>
                 <?php foreach ($upcomingPayments as $row): ?>
                 <tr style="background: #FFEB3B;">
-                    <td><?php echo $row['BillingID']; ?></td>
-                    <td><?php echo $row['AmountDue'];?></td>
-                    <td><?php echo $row['BillingDueDate']; ?></td>
+                    <td><?php echo $row['PaymentID']; ?></td>
+                    <td><?php echo $row['HoursTaught'];?></td>
+                    <td><?php echo $row['PaymentAmount']; ?></td>
+                    <td><?php echo $row['PaymentDate']; ?></td>
                    <td>
-                   <button class="btn delete-btn" onclick="markASPaid(<?php echo $row['BillingID']; ?>)">
+                   <button class="btn delete-btn" onclick="markASPaid(<?php echo $row['PaymentID']; ?>)">
                       Paid
                     </button>
                     </td> 
@@ -246,6 +248,7 @@ th, td {
               <?php foreach ($pastPayments as $row): ?>
                 <tr style="background: #c0bfbf;">
                     <td><?php echo $row['PaymentID']; ?></td>
+                    <td><?php echo $row['HoursTaught']; ?></td>
                     <td><?php echo $row['PaymentAmount']; ?></td>
                     <td><?php echo $row['PaymentDate']; ?></td>
                     <td></td>
@@ -267,33 +270,55 @@ th, td {
             <form id="addpaymentForm">
 
             <label for="CourseID">Course:</label>
-              <select id="CourseID" name="CourseID" required>
+              <select id="CourseID" name="CourseID" required onchange="updateRateAndHours()">
                 <?php foreach ($CoursesList as $Coursee): ?>
                   <?php $Course = $Coursee['CourseName'] ?>
-                  <option value="<?php echo $Coursee['CourseID']; ?>"><?php echo $Course; ?></option>
+                  <option  data-rate="<?php echo $Coursee['RateAmountPerHour']; ?>" value="<?php echo $Coursee['CourseID']; ?>"><?php echo $Course; ?></option>
                 <?php endforeach; ?>  
               </select>
 
               <!-- Other form fields here  -->
-              <label for="HoursAttended">HoursAttended:</label>
-              <input type="text" id="HoursAttended" name="HoursAttended" required>
+              <label for="HoursTaught">HoursAttended:</label>
+              <input type="text" id="HoursTaught" onchange="updateRateAndHours()" value="1" min="1" name="HoursTaught" required>
 
-              <label for="AmountDue">AmountDue:</label>
-              <input type="text" id="AmountDue" name="AmountDue" required>
+              <label for="PaymentAmount">AmountDue:</label>
+              <input type="text" id="PaymentAmount" name="PaymentAmount" required readonly>
 
               <!-- Other form fields here -->
-              <label for="BillingDueDate">Billing Due Date</label>
-              <input type="datetime-local" id="BillingDueDate" name="BillingDueDate" required>
+              <label for="PaymentDate">Billing Due Date</label>
+              <input type="datetime-local" id="PaymentDate" name="PaymentDate" required>
+
+              <input type="hidden" id="RatePerHour" name="RatePerHour">
               
               <button type="submit">Submit</button>
             </form>
           </div>
         </div>
 
+    
     <script>
 
-        function markASPaid(BillingID) {
-            fetch("./change_to_paid.php?BillingID=" + BillingID, {
+      function updateRateAndHours() {
+        let selectedOption = document.getElementById('CourseID').selectedOptions[0];
+            let ratePerHour = parseFloat(selectedOption.getAttribute('data-rate'));
+
+            // Set the hidden input value for rate per hour
+            document.getElementById('RatePerHour').value = ratePerHour;
+
+            // Get the hours attended
+            let hoursAttended = parseFloat(document.getElementById('HoursTaught').value);
+
+            // Calculate the amount due
+            let amountDue = ratePerHour * hoursAttended;
+
+            // Update the PaymentAmount field
+            document.getElementById('PaymentAmount').value = amountDue.toFixed(2);
+      }
+
+      updateRateAndHours()
+
+        function markASPaid(PaymentID) {
+            fetch("./change_to_paid.php?PaymentID=" + PaymentID, {
               method: "GET"
             })
             .then((response) => response.json())

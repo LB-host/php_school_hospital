@@ -1,5 +1,5 @@
 <?php
-require_once '../../../../connection/db_connection.php';
+require_once '../../connection/db_connection.php';
 
 session_start();
 if (!isset($_SESSION['username']) || !isset($_SESSION['password'])) {

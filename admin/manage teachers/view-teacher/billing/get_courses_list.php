@@ -1,7 +1,9 @@
 <?php
 require_once '../../../../connection/db_connection.php';
 
-$sql = "SELECT * FROM courses";
+$sql = "SELECT r.RateAmountPerHour, c.CourseName, c.CourseID  
+        FROM courses c
+        INNER JOIN courserates r ON c.CourseID=r.CourseID ";
 
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
